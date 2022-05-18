@@ -1,23 +1,24 @@
 const express = require('express');
+const rescue = require('express-rescue');
 
 const route = express.Router();
 
 const productsController = require('../controllers/productsController');
 const salesController = require('../controllers/salesController');
 
-const productMid = require('../middlewares/productMid');
-const saleMid = require('../middlewares/saleMid');
+const productsValidate = require('../middlewares/productsValidation');
+const salesValidate = require('../middlewares/salesValidation');
 
-route.get('/products', productsController.getAll);
-route.get('/products/:id', productsController.getById);
-route.post('/products', productMid, productsController.create);
-route.put('/products/:id', productMid, productsController.update);
-route.delete('/products/:id', productsController.destroy);
+route.get('/products', rescue(productsController.getAll));
+route.get('/products/:id', rescue(productsController.getById));
+route.post('/products', productsValidate, rescue(productsController.create));
+route.put('/products/:id', productsValidate, rescue(productsController.update));
+route.delete('/products/:id', rescue(productsController.destroy));
 
-route.get('/sales', salesController.getAll);
-route.get('/sales/:id', salesController.getById);
-route.post('/sales', saleMid, salesController.create);
-route.put('/sales/:id', saleMid, salesController.update);
-route.delete('/sales/:id', productsController.destroy);
+route.get('/sales', rescue(salesController.getAll));
+route.get('/sales/:id', rescue(salesController.getById));
+route.post('/sales', salesValidate, rescue(salesController.create));
+route.put('/sales/:id', salesValidate, rescue(salesController.update));
+route.delete('/sales/:id', rescue(salesController.destroy));
 
 module.exports = route;

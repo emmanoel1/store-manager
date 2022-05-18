@@ -1,6 +1,6 @@
 const productServices = require('../../services/productServices');
 
-async function allProducts(_req, res) {
+async function getAll(_req, res) {
   try {
     const resultData = await productServices.getAll();
 
@@ -10,4 +10,4 @@ async function allProducts(_req, res) {
   }
 }
 
-module.exports = allProducts;
+module.exports = getAll;

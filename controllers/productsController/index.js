@@ -1,12 +1,12 @@
-const allProducts = require('./allProducts');
-const productById = require('./productById');
+const getAll = require('./getAll');
+const getById = require('./getById');
 const create = require('./create');
 const update = require('./update');
 const destroy = require('./destroy');
 
 module.exports = {
-    allProducts,
-    productById,
+    getAll,
+    getById,
     create,
     update,
     destroy,

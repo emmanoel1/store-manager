@@ -21,7 +21,7 @@ describe('productsController.allProducts', () => {
         after(() => productServices.getAll.restore());
 
         it('No product is returned', async () => {
-            await productsController.allProducts(req, res);
+            await productsController.getAll(req, res);
             expect(res.status.calledWith(200)).to.be.true;
         });
     });
@@ -36,7 +36,7 @@ describe('productsController.allProducts', () => {
             after(() => productServices.getAll.restore());
 
             it('Product is found in the data base', async() => {
-                await productsController.allProducts(req, res);
+                await productsController.getAll(req, res);
                 expect(res.status.calledWith(500)).to.be.true;
             });
         });

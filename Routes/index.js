@@ -8,8 +8,8 @@ const salesController = require('../controllers/salesController');
 const productMid = require('../middlewares/productMid');
 const saleMid = require('../middlewares/saleMid');
 
-route.get('/products', productsController.allProducts);
-route.get('/products/:id', productsController.productById);
+route.get('/products', productsController.getAll);
+route.get('/products/:id', productsController.getById);
 route.post('/products', productMid, productsController.create);
 route.put('/products/:id', productMid, productsController.update);
 route.delete('/products/:id', productsController.destroy);

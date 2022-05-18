@@ -1,6 +1,6 @@
 const productServices = require('../../services/productServices');
 
-async function productById(req, res) {
+async function getById(req, res) {
     try {
       const { id } = req.params;
       const resultData = await productServices.getById(id);
@@ -11,4 +11,4 @@ async function productById(req, res) {
     }
   }
   
-module.exports = productById;
+module.exports = getById;

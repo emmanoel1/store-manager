@@ -1,4 +1,7 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const router = require('./routers/index');
+const { errorMiddleware } = require('./middlewares/errorMiddleware');
 
 const app = express();
 
@@ -6,6 +9,10 @@ const app = express();
 app.get('/', (_request, response) => {
   response.send();
 });
+
+app.use(bodyParser.json());
+app.use(router);
+app.use(errorMiddleware);
 
 // não remova essa exportação, é para o avaliador funcionar
 // você pode registrar suas rotas normalmente, como o exemplo acima

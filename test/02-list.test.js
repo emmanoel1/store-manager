@@ -3,7 +3,7 @@ const mysql = require("mysql2/promise");
 const restoreDb = require("./restoreDb");
 require("dotenv").config();
 
-describe("02-list", () => {
+describe.skip("02-list", () => {
   const url = `http://localhost:${process.env.PORT}`;
   const INVALID_ID = 99999;
   let connection;
@@ -25,7 +25,7 @@ describe("02-list", () => {
     await connection.end();
   });
 
-  describe("2 - Crie endpoints para listar os produtos e as vendas", () => {
+  describe.skip("2 - Crie endpoints para listar os produtos e as vendas", () => {
     it("Será validado que todos produtos estão sendo retornados", async () => {
       await frisby
         .get(`${url}/products`)
